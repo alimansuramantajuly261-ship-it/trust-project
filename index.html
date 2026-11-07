@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Почему люди доверяют блогерам больше, чем СМИ?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marck+Script&display=swap">
+<style>
+:root{--bg:#e6d7b6;--card:rgba(251,244,228,.74);--ink:#2b1d0e;--mute:#6b5535;--a:#7a1f12;--b:#4a5a70;--c:#b8892f;--line:#b89d6e;
+--fh:"Playfair Display",Georgia,"Times New Roman",serif;--fb:"EB Garamond",Georgia,"Times New Roman",serif;--fs:"Marck Script","Segoe Script",cursive;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a2016;--card:rgba(52,40,26,.8);--ink:#efe3c8;--mute:#bda884;--a:#e0705a;--b:#9db4cf;--c:#d9aa4a;--line:#6a5538}}
+:root[data-theme="dark"]{--bg:#2a2016;--card:rgba(52,40,26,.8);--ink:#efe3c8;--mute:#bda884;--a:#e0705a;--b:#9db4cf;--c:#d9aa4a;--line:#6a5538}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:400 19px/1.7 var(--fb);transition:padding .3s ease;overflow-x:hidden;background-color:var(--bg);
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .1 0 0 0 .2 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>"),
+url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><g fill='none' stroke='%238a6a3a' stroke-width='1' opacity='.35'><path d='M0 80c80-40 120 40 200 0s120-60 200-20 140 30 200-10'/><path d='M0 140c70-30 130 50 210 10s130-50 190-10 150 30 200 0'/><path d='M0 220c90-50 110 60 220 20s100-40 180 0 120 40 200 0'/><path d='M0 300c60-20 150 50 230 10s110-30 170 0 140 20 200-10'/><path d='M120 0c-30 80 40 120 10 200s-40 120-20 200'/><path d='M420 0c30 70-30 130 0 200s50 110 20 200'/></g></svg>"),
+radial-gradient(ellipse at 18% 8%,rgba(255,250,235,.7),transparent 50%),radial-gradient(ellipse at 92% 92%,rgba(150,110,60,.35),transparent 55%)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;box-shadow:inset 0 0 180px rgba(90,60,20,.5);pointer-events:none}
+@media (min-width:861px){body{padding-left:280px}body.navclosed{padding-left:0}}
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--a),var(--c));z-index:40}
+#menuBtn{position:fixed;left:14px;top:calc(env(safe-area-inset-top,0px) + 14px);z-index:50;width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:var(--a);color:#f6ead0;font:700 19px var(--fh);cursor:pointer;box-shadow:0 3px 10px rgba(60,35,10,.4);transition:transform .15s}
+#menuBtn:hover{transform:scale(1.08)}
+nav{position:fixed;left:0;top:0;bottom:0;width:280px;max-width:84vw;z-index:45;background:var(--bg);background-image:radial-gradient(ellipse at 20% 0,rgba(255,250,235,.6),transparent 60%);border-right:4px double var(--ink);padding:5rem 1.3rem 2rem;padding-top:calc(5rem + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:0;overflow-y:auto;transition:transform .3s ease;box-shadow:6px 0 24px rgba(60,35,10,.25)}
+body.navclosed nav{transform:translateX(-105%)}
+nav:before{content:"Социология доверия";font:800 17px var(--fh);letter-spacing:.06em;text-transform:uppercase;color:var(--a);padding-bottom:.9rem;margin-bottom:.4rem;border-bottom:1px solid var(--ink)}
+nav a{display:block;text-decoration:none;color:var(--ink);font:600 14px var(--fh);letter-spacing:.14em;text-transform:uppercase;padding:.8rem .2rem;border-bottom:1px solid var(--line);transition:padding .2s,color .2s}
+nav a:hover{color:var(--a);padding-left:.6rem}
+nav a.on{color:var(--a);padding-left:.8rem;border-left:3px solid var(--a)}
+main section{display:none;min-height:60vh}
+main section.show{display:block;animation:fi .5s ease}
+.hero.hide{display:none}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero{position:relative;overflow:hidden;padding:5.5rem 1.2rem 7rem;border-bottom:1px solid var(--line)}
+.hero:after{content:"";position:absolute;left:-5%;right:-5%;bottom:-40px;height:190px;background:radial-gradient(ellipse 22% 55% at 8% 80%,rgba(255,255,255,.9),transparent 70%),radial-gradient(ellipse 26% 60% at 32% 95%,rgba(255,255,255,.95),transparent 70%),radial-gradient(ellipse 24% 55% at 58% 85%,rgba(255,255,255,.9),transparent 70%),radial-gradient(ellipse 28% 60% at 86% 95%,rgba(255,255,255,.95),transparent 70%);filter:blur(10px);pointer-events:none}
+@media (prefers-color-scheme:dark){.hero:after{opacity:.18}}
+.wrap{max-width:1000px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);column-gap:2.5rem}
+.engrave{grid-column:1;grid-row:1/span 5;align-self:center;color:var(--mute);opacity:.75;width:100%;max-width:320px;height:auto}
+.wrap>*:not(.engrave){grid-column:2}
+.tag{display:block;font:600 13px var(--fb);letter-spacing:.32em;text-transform:uppercase;color:var(--a);margin-bottom:.4rem}
+h1{font:900 clamp(2rem,5.4vw,3.6rem)/1.08 var(--fh);text-transform:uppercase;letter-spacing:.03em;margin:.4rem 0 1rem}
+.lead{font-size:1.1rem;line-height:1.55;color:var(--ink);text-align:justify;hyphens:auto;max-width:560px;margin:0 0 1rem}
+.people{display:none}
+.wrap::after{content:"доверие — валюта нашей эпохи…";grid-column:2;font:400 1.5rem var(--fs);color:var(--mute);opacity:.6;transform:rotate(-2deg);margin-top:1.2rem}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.6rem;margin-top:1.2rem;max-width:560px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:.6rem 0}
+.vs .p{font:italic 500 1.05rem/1.3 var(--fb)}
+.vs .p small{display:block;font:700 11px var(--fh);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--a);margin-bottom:.1rem}
+.vs .p:last-child{text-align:right}
+.vs .x{font:italic 700 1.3rem var(--fh);color:var(--c)}
+main{max-width:900px;margin:0 auto;padding:0 1.2rem 3rem}
+section{padding:4.5rem 0 1rem}
+.num{display:flex;align-items:center;gap:.9rem;font:700 1.15rem var(--fh);letter-spacing:.3em;color:var(--a)}
+.num:after{content:"";flex:1;height:1px;background:var(--line)}
+h2{font:800 clamp(1.5rem,4vw,2.3rem)/1.2 var(--fh);text-transform:uppercase;letter-spacing:.05em;margin:.8rem 0 1.2rem}
+h3{font:italic 700 1.35rem/1.3 var(--fh);margin:2rem 0 .3rem;color:var(--a)}
+p{margin:.8rem 0}
+ul,ol{padding-left:1.3rem}
+li{margin:.45rem 0}
+li::marker{color:var(--a)}
+.q{display:grid;gap:0;margin:1rem 0;border-top:1px solid var(--ink)}
+.q div{padding:.9rem .4rem;border-bottom:1px solid var(--line);font-style:italic}
+.note{border-left:4px solid var(--c);background:var(--card);padding:.9rem 1.2rem;color:var(--mute);font-size:17px;font-style:italic;margin:1.4rem 0}
+.note b{color:var(--ink);font-style:normal}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:1.2rem 0}
+.card{background:var(--card);border:3px double var(--line);padding:1.2rem 1.3rem;box-shadow:0 6px 18px rgba(60,35,10,.18);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(60,35,10,.28)}
+.card h4{margin:0 0 .4rem;font:700 1.15rem var(--fh);color:var(--a)}
+.card p{margin:0;font-size:17px;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;margin:1.4rem 0;border-top:3px double var(--ink);border-bottom:3px double var(--ink)}
+.stat{padding:1.2rem .6rem;border-right:1px solid var(--line);text-align:center}
+.stat:last-child{border-right:0}
+.stat b{display:block;font:900 3.2rem/1 var(--fh);color:var(--a)}
+.stat small{color:var(--mute);font-size:16px;font-style:italic}
+.tl{border-left:2px solid var(--ink);margin:1.4rem 0 1rem .5rem;padding-left:1.5rem}
+.tl div{position:relative;margin:0 0 1.2rem}
+.tl div:before{content:"";position:absolute;left:-2.05rem;top:.5rem;width:11px;height:11px;transform:rotate(45deg);background:var(--c);border:1px solid var(--ink)}
+.tl b{display:block;font:700 13px var(--fh);letter-spacing:.16em;text-transform:uppercase;color:var(--a)}
+.tl span{color:var(--ink);font-size:17px}
+.demo{display:inline-block;color:var(--a);border:3px double var(--a);font:800 12px var(--fh);letter-spacing:.14em;text-transform:uppercase;padding:.35rem .9rem;margin-bottom:.8rem;transform:rotate(-2deg);opacity:.9}
+.chart{background:var(--card);border:3px double var(--line);padding:1.2rem;margin:1rem 0;box-shadow:0 6px 18px rgba(60,35,10,.15)}
+.chart h4{margin:0 0 1rem;font:700 1.15rem var(--fh)}
+.row{display:grid;grid-template-columns:minmax(110px,34%) 1fr 46px;align-items:center;gap:.8rem;margin:.6rem 0;font:500 16px var(--fb)}
+.track{background:rgba(120,90,50,.18);height:16px;border:1px solid var(--line)}
+.bar{height:100%;width:0;background:var(--b);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.chart.o .bar{background:var(--a)}
+blockquote{margin:1.6rem 0;padding:.5rem 0 .5rem 1.6rem;border-left:3px solid var(--c);font:italic 500 1.3rem/1.5 var(--fh);color:var(--mute)}
+.concl{padding:0;counter-reset:k}
+.concl li{list-style:none;margin:0;padding:1rem .4rem 1rem 3.4rem;border-bottom:1px solid var(--line);position:relative;counter-increment:k}
+.concl li:first-child{border-top:1px solid var(--ink)}
+.concl li:before{content:counter(k,upper-roman);position:absolute;left:0;top:.9rem;font:italic 700 1.5rem var(--fh);color:var(--a);width:2.6rem}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem}
+.m{background:var(--card);border:3px double var(--line);padding:1.1rem;font:700 17px var(--fh);box-shadow:0 6px 18px rgba(60,35,10,.15)}
+.m i{display:block;font:italic 900 1.9rem/1 var(--fh);color:var(--a);margin-bottom:.4rem}
+.m em{display:block;color:var(--mute);font:italic 400 16px/1.45 var(--fb);margin-top:.3rem}
+footer{position:relative;text-align:center;color:var(--mute);font:600 12px var(--fh);letter-spacing:.2em;text-transform:uppercase;padding:3rem 1rem 3rem;border-top:1px solid var(--line);background:linear-gradient(rgba(255,255,255,.35),transparent 60%)}
+@media (max-width:760px){.wrap{display:block}.engrave{position:absolute;right:-50px;top:-20px;width:240px;opacity:.14;z-index:-1}.wrap::after{display:block}.vs{grid-template-columns:1fr}.vs .x{text-align:center}.vs .p:last-child{text-align:left}}
+@media (prefers-reduced-motion:reduce){.bar,nav,body{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<button id="menuBtn" type="button" aria-label="Меню" aria-expanded="true">✕</button>
+<nav><a href="#problem">Проблема</a><a href="#goal">Цель</a><a href="#methods">Методы</a><a href="#results">Результаты</a><a href="#analysis">Анализ</a><a href="#conclusions">Выводы</a><a href="#sources">Источники</a><a href="#team">Команда</a></nav>
+
+<div class="hero"><div class="wrap">
+<svg class="engrave" viewBox="0 0 320 320" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+<path d="M60 300V210h200v90"/><path d="M60 210h200"/>
+<path d="M80 300v-48a15 15 0 0 1 30 0v48M125 300v-48a15 15 0 0 1 30 0v48M170 300v-48a15 15 0 0 1 30 0v48M215 300v-48a15 15 0 0 1 30 0v48"/>
+<path d="M80 210v-40h160v40"/><path d="M95 172v36M120 172v36M145 172v36M170 172v36M195 172v36M220 172v36"/>
+<path d="M80 170a80 80 0 0 1 160 0"/><path d="M120 170q-12-48 40-80M200 170q12-48-40-80M160 170V90M140 170q-4-45 20-80M180 170q4-45-20-80"/>
+<path d="M150 90h20l-3-18h-14z"/><path d="M160 72V48M153 57h14"/>
+<path d="M28 300V172h30v128"/><path d="M28 172a15 15 0 0 1 30 0"/><path d="M34 190h18M34 215h18M34 240h18"/>
+<path d="M262 300V172h30v128"/><path d="M262 172a15 15 0 0 1 30 0"/><path d="M268 190h18M268 215h18M268 240h18"/>
+<path d="M20 300h280"/></g></svg>
+<span class="tag">Учебно-исследовательский проект · Тема 22</span>
+<h1>Почему люди доверяют блогерам больше, чем СМИ?</h1>
+<p class="lead">Онлайн-опрос молодёжи и анализ факторов доверия к источникам информации в эпоху цифровизации: кому мы верим, когда читаем новости, и почему.</p>
+<div class="people" aria-hidden="true">👥 💬 📱 📰 📊</div>
+<div class="vs">
+<div class="p"><small>Блогер</small>Свой, живой, быстрый</div>
+<div class="x">VS</div>
+<div class="p"><small>Традиционные СМИ</small>Официально, проверено</div>
+</div>
+</div></div>
+
+<main>
+
+<section id="problem">
+<div class="num">I</div><h2>Тема и проблема</h2>
+
+<h3>О чём наш проект</h3>
+<p>Ещё два-три десятилетия назад главными источниками новостей были телевидение, радио, газеты и сайты крупных изданий. Сегодня значительная часть людей, особенно молодёжи, узнаёт о событиях в социальных сетях, мессенджерах и на видеоплатформах. Рядом с журналистами появились блогеры: они комментируют новости, объясняют сложные темы, делятся личным опытом и формируют мнение своей аудитории.</p>
+<p>Наш проект посвящён вопросу, который кажется парадоксальным: почему многие люди доверяют блогерам не меньше, а иногда и больше, чем традиционным СМИ, хотя у редакций есть профессиональные стандарты, а у блогеров они, как правило, не обязательны.</p>
+
+<h3>В чём проблема</h3>
+<p>У традиционных СМИ есть редакционные правила: проверка фактов, разделение новости и мнения, ответственность перед законом и репутацией. Блогер чаще всего действует сам: он может ошибиться, не указать источник, скрыть рекламу или подать собственное мнение как факт. Но аудитория при этом нередко воспринимает его как более честного и «настоящего».</p>
+<p>Получается противоречие между формальной надёжностью источника и тем, кому люди верят на практике. Именно это противоречие мы и исследуем.</p>
+
+<h3>Почему это важно</h3>
+<ul>
+<li><b>Доверие определяет поведение.</b> От того, кому мы верим, зависят наши решения: что покупать, за кого голосовать, как относиться к событиям и людям.</li>
+<li><b>Это вопрос общественной жизни.</b> Если люди перестают доверять институтам и профессиональной журналистике, меняется то, как общество обсуждает важные вопросы.</li>
+<li><b>Риск дезинформации.</b> Чем сильнее доверие к источнику без проверки фактов, тем легче распространяются ошибочные и недостоверные сообщения.</li>
+<li><b>Это касается нас самих.</b> Мы, студенты, входим в ту аудиторию, которая активнее всего использует соцсети, поэтому тема для нас практическая, а не абстрактная.</li>
+</ul>
+
+<h3>Объект и предмет исследования</h3>
+<div class="grid">
+<div class="card"><h4>Объект</h4><p>Молодёжь как аудитория традиционных СМИ и блогеров.</p></div>
+<div class="card"><h4>Предмет</h4><p>Факторы, влияющие на доверие к блогерам и традиционным СМИ как источникам информации.</p></div>
+</div>
+</section>
+
+<section id="goal">
+<div class="num">II</div><h2>Цель и исследовательские вопросы</h2>
+
+<h3>Цель</h3>
+<p>Выяснить, почему молодёжь доверяет блогерам больше, чем традиционным СМИ, и какие факторы на это влияют.</p>
+
+<h3>Задачи</h3>
+<ol>
+<li>Изучить научные и аналитические материалы о доверии к СМИ и блогерам.</li>
+<li>Разработать и провести онлайн-опрос среди молодёжи.</li>
+<li>Определить, каким источникам информации респонденты доверяют больше всего.</li>
+<li>Выявить причины доверия к блогерам и недоверия к традиционным СМИ.</li>
+<li>Сопоставить полученные данные с теориями и понятиями курса.</li>
+<li>Сформулировать выводы и практические рекомендации.</li>
+</ol>
+
+<h3>Исследовательские вопросы</h3>
+<div class="q">
+<div><b>Вопрос 1.</b> Каким источникам информации больше доверяют респонденты: блогерам, традиционным СМИ или и тем и другим одинаково?</div>
+<div><b>Вопрос 2.</b> Какие причины доверия к блогерам и недоверия к традиционным СМИ они называют?</div>
+<div><b>Вопрос 3.</b> Различается ли доверие в зависимости от возраста и от того, как часто человек пользуется соцсетями?</div>
+</div>
+
+<h3>Рабочие гипотезы</h3>
+<p>Гипотезы — это предположения, которые мы проверяем опросом. Они могут подтвердиться или нет, и оба результата ценны.</p>
+<ul>
+<li>Блогерам доверяют за ощущение близости и искренности: они говорят «как обычные люди».</li>
+<li>К традиционным СМИ меньше доверяют из-за ощущения предвзятости и зависимости от владельцев или власти.</li>
+<li>Чем чаще человек пользуется соцсетями, тем выше его доверие к блогерам.</li>
+</ul>
+<div class="note"><b>Для команды:</b> после обработки опроса пройдитесь по гипотезам и напишите рядом «подтвердилась» или «не подтвердилась» с цифрой.</div>
+</section>
+
+<section id="methods">
+<div class="num">III</div><h2>Источники и методы</h2>
+
+<div class="stats">
+<div class="stat"><b>65</b><small>респондентов онлайн-опроса</small></div>
+<div class="stat"><b>5–7</b><small>научных и аналитических источников</small></div>
+<div class="stat"><b>6</b><small>участников проектной группы</small></div>
+</div>
+
+<h3>Онлайн-опрос</h3>
+<p>Основной метод сбора данных — анонимный онлайн-опрос. Он удобен тем, что за короткое время можно получить ответы многих людей, а респонденты отвечают спокойно, без давления. В опросе приняли участие 65 человек. Анкета включает вопросы о том, откуда люди получают новости, каким источникам они доверяют и почему.</p>
+
+<h3>Анализ литературы</h3>
+<p>Параллельно мы изучали научные, учебные и аналитические материалы по теме: исследования доверия к СМИ, работы о роли лидеров мнений и о влиянии социальных сетей на восприятие информации. Они дали нам понятия, с помощью которых мы объясняем результаты опроса.</p>
+
+<h3>Этика исследования</h3>
+<ul>
+<li>Участие в опросе добровольное и анонимное.</li>
+<li>Мы не собирали имена и контакты, а результаты показываем только в обобщённом виде.</li>
+<li>Данные использовались только для учебного проекта.</li>
+</ul>
+
+<h3>Ограничения выборки</h3>
+<p>Опрос проводился онлайн и среди ограниченного круга людей, поэтому выборка не репрезентативна для всего населения. Наши выводы относятся к опрошенной молодёжи и показывают тенденции, а не точную картину по всей стране.</p>
+
+<h3>Как шла работа</h3>
+<div class="tl">
+<div><b>Недели 1–2</b><span>Выбор темы, формирование группы, распределение обязанностей.</span></div>
+<div><b>Неделя 3</b><span>Разработка концепции проекта: проблема, цель, вопросы, задачи, методы.</span></div>
+<div><b>Недели 4–5</b><span>Поиск и анализ источников, краткий библиографический обзор.</span></div>
+<div><b>Недели 6–8</b><span>Сбор материала: подготовка и проведение онлайн-опроса.</span></div>
+<div><b>Недели 9–11</b><span>Анализ результатов: систематизация данных, сопоставление с теориями, предварительные выводы.</span></div>
+<div><b>Недели 12–14</b><span>Подготовка итогового аналитического отчёта и презентации.</span></div>
+<div><b>Неделя 15</b><span>Защита проекта.</span></div>
+</div>
+</section>
+
+<section id="results">
+<div class="num">IV</div><h2>Основные результаты</h2>
+
+<span class="demo">ДЕМО-ДАННЫЕ: замените реальными цифрами опроса</span>
+<div class="note"><b>Важно:</b> цифры в диаграммах ниже условные, они показывают, как будут выглядеть результаты. Реальные данные опроса будут добавлены после обработки анкет.</div>
+
+<h3>Кто участвовал в опросе</h3>
+<p>В опросе приняли участие 65 человек. Распределение по возрасту, полу и роду занятий: <i>[данные будут добавлены].</i> Описание выборки важно, чтобы понимать, о ком именно говорят наши выводы.</p>
+
+<h3>Кому доверяют больше</h3>
+<p>Первый вопрос — общий: какому источнику информации респонденты доверяют больше. Он напрямую отвечает на тему проекта.</p>
+<div class="chart"><h4>Кому вы больше доверяете?</h4></div>
+
+<h3>Причины доверия к блогерам</h3>
+<p>Второй блок показывает, что именно, по мнению респондентов, привлекает их в блогерах.</p>
+<div class="chart o"><h4>Почему доверяют блогерам?</h4></div>
+
+<h3>Причины недоверия к традиционным СМИ</h3>
+<p>Третий блок — обратная сторона: какие претензии к традиционным СМИ называют респонденты.</p>
+<div class="chart"><h4>Почему не доверяют традиционным СМИ?</h4></div>
+
+<h3>Как читать диаграммы</h3>
+<ul>
+<li>Длина полосы показывает долю респондентов, выбравших вариант.</li>
+<li>Если вопрос допускал несколько ответов, сумма может быть больше 100%.</li>
+<li>Мы сравниваем доли, а не делаем вывод о всех людях в стране.</li>
+</ul>
+</section>
+
+<section id="analysis">
+<div class="num">V</div><h2>Анализ результатов</h2>
+<p>Цифры сами по себе отвечают на вопрос «что», но не на вопрос «почему». Чтобы объяснить результаты, мы используем понятия из социологии и коммуникации.</p>
+
+<h3>Теоретические объяснения</h3>
+<div class="grid">
+<div class="card"><h4>Парасоциальное взаимодействие</h4><p>Зрители могут воспринимать медийного человека как знакомого, с которым у них почти личные отношения, хотя общение идёт в одну сторону. Это объясняет, почему блогер кажется «своим».</p></div>
+<div class="card"><h4>Кризис доверия к институтам</h4><p>Если люди меньше доверяют государству, крупным организациям и официальным структурам, это распространяется и на СМИ, воспринимаемые как часть системы.</p></div>
+<div class="card"><h4>Аутентичность и профессионализм</h4><p>Блогер выигрывает в «настоящести»: личная история, разговорный стиль, эмоции. Журналист выигрывает в стандартах, но может казаться отстранённым.</p></div>
+<div class="card"><h4>Лидеры мнений</h4><p>Согласно классической идее двухступенчатой коммуникации, информация часто доходит до людей через тех, кому они доверяют лично. Сегодня такими лидерами нередко становятся блогеры.</p></div>
+<div class="card"><h4>Алгоритмы и «пузыри»</h4><p>Лента соцсетей подбирает контент по интересам пользователя, поэтому мы чаще видим того, с кем уже согласны, и доверие к таким источникам усиливается.</p></div>
+<div class="card"><h4>Медиаграмотность</h4><p>Доверие может быть высоким даже без привычки проверять информацию. Умение критически оценивать источник помогает не путать убедительность с достоверностью.</p></div>
+</div>
+
+<h3>Что показывают наши данные</h3>
+<p>Здесь мы сопоставим результаты опроса с теорией: какие причины доверия к блогерам называют чаще, подтверждаются ли гипотезы, где мнения расходятся по возрасту и частоте использования соцсетей. <i>[Раздел будет заполнен после обработки реальных данных.]</i></p>
+
+<h3>Важное различие: доверие и использование</h3>
+<p>Человек может чаще смотреть блогеров, но при этом не считать их надёжнее. И наоборот, он может доверять СМИ, но редко ими пользоваться. Поэтому в опросе важно сравнивать, чем люди пользуются и кому они верят.</p>
+
+<blockquote>Место для цитаты респондента из интервью (если интервью будут проводиться).</blockquote>
+</section>
+
+<section id="conclusions">
+<div class="num">VI</div><h2>Выводы</h2>
+<p>Итоговые выводы будут сформулированы по реальным данным опроса. Структура выводов:</p>
+<ol class="concl">
+<li><b>Главный вывод.</b> Кому доверяют больше: блогерам, СМИ или поровну, и насколько велика разница.</li>
+<li><b>Почему доверяют блогерам.</b> Основные причины, которые называли респонденты, и как они связаны с теорией.</li>
+<li><b>Что не устраивает в традиционных СМИ.</b> Главные претензии и что за ними стоит.</li>
+<li><b>Проверка гипотез.</b> Какие подтвердились, какие нет.</li>
+<li><b>Ограничения.</b> Размер и состав выборки, метод онлайн-опроса.</li>
+</ol>
+
+<h3>Практические рекомендации</h3>
+<ul>
+<li><b>Для читателей:</b> сверять важную информацию минимум по двум независимым источникам и проверять, кто и зачем её публикует.</li>
+<li><b>Для блогеров:</b> ссылаться на источники и отделять факты от личного мнения и рекламы.</li>
+<li><b>Для СМИ:</b> говорить с аудиторией проще и ближе, не жертвуя проверкой фактов.</li>
+</ul>
+
+<h3>Идеи для дальнейшей работы</h3>
+<p>Тему можно продолжить: расширить выборку, сравнить разные возрастные группы, добавить интервью и отдельно изучить, как люди проверяют информацию.</p>
+</section>
+
+<section id="sources">
+<div class="num">VII</div><h2>Список использованных источников</h2>
+<p>Ниже классические и регулярно обновляемые работы по теме. Перед сдачей проверьте каждую запись по оригиналу и при необходимости дополните список своими материалами.</p>
+<ol>
+<li>Horton D., Wohl R. R. Mass Communication and Para-Social Interaction: Observations on Intimacy at a Distance // Psychiatry. 1956.</li>
+<li>Katz E., Lazarsfeld P. F. Personal Influence: The Part Played by People in the Flow of Mass Communications. 1955.</li>
+<li>Edelman Trust Barometer (ежегодный отчёт о доверии к институтам и СМИ).</li>
+<li>Reuters Institute Digital News Report (ежегодный отчёт о потреблении новостей).</li>
+<li>Шабденова А. Б., Алимбекова Г. Т., Лифанов С. А. Социально-значимая информация и проблемы доверия казахстанских граждан к СМИ // Вестник Российского университета дружбы народов. Серия: Социология. URL: https://journals.rudn.ru/sociology/article/view/32042/ru_RU</li>
+</ol>
+</section>
+
+<section id="team">
+<div class="num">VIII</div><h2>Команда</h2>
+<p>Проект выполнила группа из шести человек. У каждого была своя зона ответственности, а итоговые решения мы принимали вместе.</p>
+<div class="team">
+<div class="m"><i>1</i>Участник 1<em>Координатор: сроки, сборка итогового файла, связь с преподавателем</em></div>
+<div class="m"><i>2</i>Участник 2<em>Сбор данных: распространение опроса</em></div>
+<div class="m"><i>3</i>Участник 3<em>Сбор данных: распространение опроса</em></div>
+<div class="m"><i>4</i>Участник 4<em>Аналитик: обработка ответов, диаграммы</em></div>
+<div class="m"><i>5</i>Участник 5<em>Теоретик: источники и теоретическое объяснение</em></div>
+<div class="m"><i>6</i>Участник 6<em>Презентация и подготовка к защите</em></div>
+</div>
+<div class="note"><b>Для команды:</b> замените «Участник 1–6» настоящими именами и при необходимости поменяйте роли.</div>
+</section>
+
+</main>
+<footer>Проектная работа (СРО), 2026</footer>
+
+<script>
+var DATA=[
+ [["Блогерам",48],["Традиционным СМИ",22],["Поровну",30]],
+ [["Говорят как обычные люди",62],["Быстро сообщают новости",54],["Кажутся искренними",47],["Можно задать вопрос",31]],
+ [["Предвзятость",58],["Скучная подача",41],["Зависимость от власти или владельцев",52],["Медленная реакция",24]]
+];
+document.querySelectorAll('.chart').forEach(function(c,i){
+ DATA[i].forEach(function(d){
+  var r=document.createElement('div');r.className='row';
+  r.innerHTML='<span></span><div class="track"><div class="bar"></div></div><b></b>';
+  r.children[0].textContent=d[0];r.children[2].textContent=d[1]+'%';
+  r.querySelector('.bar').dataset.w=d[1];
+  c.appendChild(r);
+ });
+});
+function fill(){document.querySelectorAll('.bar').forEach(function(b){b.style.width=b.dataset.w+'%'})}
+if('IntersectionObserver' in window){
+ var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){fill();io.disconnect()}})},{threshold:.1});
+ io.observe(document.getElementById('results'));
+}else{fill()}
+var links=document.querySelectorAll('nav a');
+function show(){var id=(location.hash||'').slice(1);var secs=document.querySelectorAll('main section');var ok=false;secs.forEach(function(s){if(s.id===id)ok=true});if(!ok)id=secs[0].id;secs.forEach(function(s){s.classList.toggle('show',s.id===id)});links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)});document.querySelector('.hero').classList.toggle('hide',id!==secs[0].id);scrollTo(0,0)}
+addEventListener('hashchange',show);show();
+var pg=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;pg.style.width=(m>0?h.scrollTop/m*100:0)+'%'},{passive:true});
+var btn=document.getElementById('menuBtn');
+function setNav(o){document.body.classList.toggle('navclosed',!o);btn.textContent=o?'\u2715':'\u2630';btn.setAttribute('aria-expanded',o?'true':'false')}
+setNav(innerWidth>=861);
+btn.addEventListener('click',function(){setNav(document.body.classList.contains('navclosed'))});
+links.forEach(function(a){a.addEventListener('click',function(){if(innerWidth<861)setNav(false)})});
+document.addEventListener('click',function(e){if(innerWidth<861&&!document.body.classList.contains('navclosed')&&!e.target.closest('nav')&&e.target!==btn)setNav(false)});
+</script>
+</body>
+</html>
